@@ -1,0 +1,19 @@
+{
+  "name": "vue-resumer-2018-8-7",
+  "version": "1.0.0",
+  "description": "Vue的第一个作品",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luojiajing12345/vue-resumer-2018-8-7.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/luojiajing12345/vue-resumer-2018-8-7/issues"
+  },
+  "homepage": "https://github.com/luojiajing12345/vue-resumer-2018-8-7#readme"
+}
