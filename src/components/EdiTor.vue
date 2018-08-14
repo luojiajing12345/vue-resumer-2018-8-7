@@ -2,10 +2,7 @@
     <div id='editor'>
         <nav>
             <ol>
-                <li v-for = "i in [0,1,2,3,4,5]" 
-                    v-bind:class = '{active: currentTab === i}' 
-                    v-on:click = 'currentTab = i'
-                    >
+                <li v-for = "i in [0,1,2,3,4,5]" v-bind:class = '{active: currentTab === i}' v-on:click = 'currentTab = i'>
                     <svg class="icon" aria-hidden="true">
                         <use v-bind:xlink:href="`#icon-${icons[i]}`"></use>
                     </svg>
@@ -13,12 +10,9 @@
             </ol>
         </nav>
         <ol class="panes">
-            <li v-bind:class="{active:currentTab === 0}">tab1</li>
-            <li v-bind:class="{active:currentTab === 1}">tab2</li>
-            <li v-bind:class="{active:currentTab === 2}">tab3</li>
-            <li v-bind:class="{active:currentTab === 3}">tab4</li>
-            <li v-bind:class="{active:currentTab === 4}">tab5</li>
-            <li v-bind:class="{active:currentTab === 5}">tab6</li>
+            <li v-for = "i in [0,1,2,3,4,5]" v-bind:class = '{active: currentTab === i}'>
+                tag {{i}}
+            </li>
         </ol>
     </div>
 </template>
