@@ -41,7 +41,6 @@ export default {
   width: 1em;
   height: 1em;
   vertical-align: -0.15em;
-  fill: currentColor;
   overflow: hidden;
 
 }
@@ -55,6 +54,7 @@ main {
     background: white;
     box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
     border-radius: 10px;
+    overflow:hidden;
   }
   > .preview {
     flex: 1;
