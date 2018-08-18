@@ -11,39 +11,54 @@
         </nav>
         <ol class="panes">
             <li v-bind:class="{active:currentTab === 0}">
-                <ProfileEditor v-bind:profile="profile"/>
+                <ProfileEditor v-bind:profile="profile" />
             </li>
             <li v-bind:class="{active:currentTab === 1}">
-                <WorkHistoryEditor v-bind:workHistory="workHistory"/>
+                <ArrayEditor v-bind:items="workHistory" v-bind:labels="{company: '公司',content:'工作内容'}" v-bind:title="'工作经历'" />
             </li>
             <li v-bind:class="{active:currentTab === 2}">
-                <h2>学习经历</h2>
+                <ArrayEditor v-bind:items="studyHistory" v-bind:labels="{school: '学校',duration:'时间',degree:'学位'}" v-bind:title="'学习经历'" />
             </li>
             <li v-bind:class="{active:currentTab === 3}">
-                <h2>项目经历</h2>
+                <ArrayEditor v-bind:items="projects" v-bind:labels="{name: '项目名称',content:'工作内容'}" title="项目经历" />
             </li>
             <li v-bind:class="{active:currentTab === 4}">
-                <h2>获奖情况</h2>
+                <ArrayEditor v-bind:items="awards" v-bind:labels="{name: '奖励详情'}" title="获奖情况" />
             </li>
             <li v-bind:class="{active:currentTab === 5}">
                 <h2>联系方式</h2>
+                <h2>个人信息</h2>
+                <el-form>
+                    <el-form-item label="QQ">
+                        <el-input v-model="contacts.qq"></el-input>
+                    </el-form-item>
+                    <el-form-item label="微信">
+                        <el-input v-model="contacts.wx"></el-input>
+                    </el-form-item>
+                    <el-form-item label="邮箱">
+                        <el-input v-model="contacts.email"></el-input>
+                    </el-form-item>
+                    <el-form-item label="手机">
+                        <el-input v-model="contacts.phone"></el-input>
+                    </el-form-item>
+                </el-form>
             </li>
         </ol>
     </div>
 </template>
 
 <script>
-    import ProfileEditor from './ProfileEditor'
-    import WorkHistoryEditor from './WorkHistoryEditor'
+import ProfileEditor from "./ProfileEditor";
+import ArrayEditor from "./ArrayEditor";
 export default {
-    components:{ ProfileEditor,WorkHistoryEditor},
+    components: { ProfileEditor, ArrayEditor },
     data() {
         return {
             currentTab: 0,
             icons: [
                 "credentials_icon",
-                "book",
                 "work0",
+                "book",
                 "aixin1",
                 "jiangbei",
                 "dianhua"
@@ -53,12 +68,14 @@ export default {
                 city: "",
                 bitrh: ""
             },
-            workHistory: [{ company: "", content: "" }]
+            workHistory: [{ company: "", content: "" }],
+            studyHistory: [{ school: "", duration: "", degree: "" }],
+            projects: [{ name: "", content: "" }],
+            awards: [{ name: "" }],
+            contacts:[{qq:'',wx:'',emain:'',phone:''}]
         };
     },
-    methods: {
-
-    }
+    methods: {}
 };
 </script>
 
@@ -87,7 +104,7 @@ export default {
         flex: 1;
         .container {
             position: relative;
-            .works{
+            .works {
                 padding-bottom: 20px;
             }
             .rmButton {
