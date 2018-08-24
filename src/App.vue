@@ -1,11 +1,12 @@
 <template>
-  <div id="app">
-    <TopBar class='topbar'/>
+  <div id="app" v-bind:class="{previewMode:previewMode}">
+    <TopBar class='topbar' v-on:preview="preview"/>
     <main>    
-    <EdiTor class='editor'/>
-    <PreView class='preview'/>
+    <EdiTor v-bind:resume="resume" class='editor'/>
+    <PreView v-bind:resume="resume" class='preview'/>
 
     </main>
+    <el-button id='exitPreview' v-on:click="exitPreview" >退出预览</el-button>
   </div>
 </template>
 
@@ -15,11 +16,33 @@ import TopBar from "./components/TopBar";
 import PreView from "./components/PreView";
 import EdiTor from "./components/EdiTor";
 export default {
+  data() {
+    return {
+      previewMode:false,
+      resume:{
+            profile: {name: "",city: "",bitrh: ""},
+            workHistory: [{ company: "", content: "" }],
+            studyHistory: [{ school: "", duration: "", degree: "" }],
+            projects: [{ name: "", content: "" }],
+            awards: [{ name: "" }],
+            contacts:[{qq:'',wx:'',emain:'',phone:''}]
+      }
+    }
+  },
+  methods:{
+    exitPreview(){
+      this.previewMode = false
+    },
+    preview(){
+      this.previewMode =true
+    }
+  },
   components: {
     TopBar,
     PreView,
     EdiTor
-  }
+  },
+
 };
 </script>
 
@@ -54,7 +77,7 @@ main {
     background: white;
     box-shadow: 0 0 3px hsla(0, 0, 0, 0.5);
     border-radius: 10px;
-    overflow:auto;
+    overflow:hidden;
   }
   > .preview {
     flex: 1;
@@ -64,4 +87,23 @@ main {
     border-radius: 10px;
   }
 }
+.previewMode>#topbar{
+  display: none
+}
+.previewMode #editor{
+  display: none
+}
+.previewMode #preview{
+  max-width: 800px;
+  margin: 40px auto;
+}
+#exitPreview {
+  display: none
+}
+.previewMode #exitPreview{
+  display: inline-block;
+  position: fixed;
+  right: 16px;
+  bottom:16px;
+} 
 </style>
